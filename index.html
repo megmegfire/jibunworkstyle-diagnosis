@@ -38,9 +38,11 @@
   }
 
   #result h2 {
-    font-size: 1.2rem;
-    text-align: center;
-  }
+  font-size: 1.2rem;
+  text-align: center;
+  white-space: nowrap;     /* 改行を防ぐ */
+  overflow-wrap: normal;   /* 単語の途中での改行を防ぐ */
+}
 
   #result p {
     font-size: 1rem;
