@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>働き方診断</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: #f7f5f2; /* グレージュベース */
+      color: #333;
+      margin: 0;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      color: #5f5c59;
+    }
+    .question {
+      margin-bottom: 1.5rem;
+    }
+    .question h2 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: #444;
+    }
+    .options label {
+      display: block;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+    }
+    button {
+      display: block;
+      margin: 2rem auto 0;
+      padding: 0.75rem 2rem;
+      background-color: #b8aaa2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background-color: #ece8e4;
+      border-radius: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>あなたに合った働き方診断</h1>
+    <form id="quizForm">
+      <div class="question">
+        <h2>Q1. 仕事で一番大事にしたいものは？</h2>
+        <div class="options">
+          <label><input type="radio" name="q1" value="A" required /> 安定と保障</label>
+          <label><input type="radio" name="q1" value="B" /> 成長と挑戦</label>
+          <label><input type="radio" name="q1" value="C" /> 自由とバランス</label>
+        </div>
+      </div>
+      <div class="question">
+        <h2>Q2. 自分の性格に一番近いのは？</h2>
+        <div class="options">
+          <label><input type="radio" name="q2" value="A" required /> ルールがある方が落ち着く</label>
+          <label><input type="radio" name="q2" value="B" /> 新しいことに飛び込むのが好き</label>
+          <label><input type="radio" name="q2" value="C" /> 自分のペースで動きたい</label>
+        </div>
+      </div>
+      <div class="question">
+        <h2>Q3. 収入面で重視するのは？</h2>
+        <div class="options">
+          <label><input type="radio" name="q3" value="A" required /> 安定した固定給</label>
+          <label><input type="radio" name="q3" value="B" /> 努力次第で高収入</label>
+          <label><input type="radio" name="q3" value="C" /> 本業＋副収入</label>
+        </div>
+      </div>
+      <div class="question">
+        <h2>Q4. 理想の働き方に近いのは？</h2>
+        <div class="options">
+          <label><input type="radio" name="q4" value="A" required /> 組織でチームと協働</label>
+          <label><input type="radio" name="q4" value="B" /> 一人でプロジェクト推進</label>
+          <label><input type="radio" name="q4" value="C" /> 複数の環境を持つ</label>
+        </div>
+      </div>
+      <div class="question">
+        <h2>Q5. 5年後、どうなっていたい？</h2>
+        <div class="options">
+          <label><input type="radio" name="q5" value="A" required /> 昇進して役職を得ていたい</label>
+          <label><input type="radio" name="q5" value="B" /> 自分のビジネスを展開していたい</label>
+          <label><input type="radio" name="q5" value="C" /> 本業と副業をうまく両立していたい</label>
+        </div>
+      </div>
+      <button type="submit">診断する</button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const answers = ['q1', 'q2', 'q3', 'q4', 'q5'].map(q =>
+        document.querySelector(`input[name="${q}"]:checked`).value
+      );
+      const count = { A: 0, B: 0, C: 0 };
+      answers.forEach(ans => count[ans]++);
+      let resultText = '';
+      if (count.A >= 3) {
+        resultText = '<h2>あなたは【会社員タイプ】</h2><p>安定や組織での協働を重視するあなたは、会社員としてのキャリアで力を発揮できるタイプ。副業で小さく挑戦するのもおすすめ！</p>';
+      } else if (count.B >= 3) {
+        resultText = '<h2>あなたは【フリーランスタイプ】</h2><p>自由と成長を求めるあなたは、フリーランス的な働き方に向いています。自分の力を信じて、一歩踏み出す準備を！</p>';
+      } else {
+        resultText = '<h2>あなたは【副業ハイブリッドタイプ】</h2><p>安定と自由のバランスを求めるあなたは、副業やパラレルキャリアに最適。少しずつ自分らしい働き方を設計していきましょう！</p>';
+      }
+      const resultBox = document.getElementById('result');
+      resultBox.innerHTML = resultText;
+      resultBox.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
