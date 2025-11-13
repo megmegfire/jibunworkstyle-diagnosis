@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>働き方診断</title>
+  <title>じぶん働き方診断</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,15 +129,22 @@
 
   <script>
     let currentStep = 1;
-    function nextStep() {
-      const current = document.querySelector('.step.active');
-      const next = document.querySelector(`.step[data-step="${currentStep + 1}"]`);
-      if (next) {
-        current.classList.remove('active');
-        next.classList.add('active');
-        currentStep++;
-      }
-    }
+function nextStep() {
+  const current = document.querySelector('.step.active');
+  const selected = current.querySelector('input[type="radio"]:checked');
+
+  if (!selected) {
+    alert('選択肢を選んでください');
+    return; // ストップして進まない
+  }
+
+  const next = document.querySelector(`.step[data-step="${currentStep + 1}"]`);
+  if (next) {
+    current.classList.remove('active');
+    next.classList.add('active');
+    currentStep++;
+  }
+}
 
     document.getElementById('quizForm').addEventListener('submit', function(event) {
       event.preventDefault();
