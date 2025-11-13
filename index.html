@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>じぶん働き方診断</title>
+  <title>働き方診断</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,7 @@
   <style>
     body {
       font-family: 'Noto Sans JP', sans-serif;
-      background-color: #f7f5f2; /* グレージュベース */
+      background-color: #f7f5f2;
       color: #333;
       margin: 0;
       padding: 2rem;
@@ -28,13 +28,15 @@
       text-align: center;
       color: #5f5c59;
     }
-    .question {
-      margin-bottom: 1.5rem;
+    .step {
+      display: none;
+    }
+    .step.active {
+      display: block;
     }
     .question h2 {
       font-size: 1rem;
       margin-bottom: 0.5rem;
-      color: #444;
     }
     .options label {
       display: block;
@@ -58,94 +60,85 @@
       background-color: #ece8e4;
       border-radius: 10px;
       display: none;
+      text-align: center;
     }
-/* モバイル用の微調整 */
-@media (max-width: 600px) {
-  body {
-    padding: 1rem;
-  }
-
-  .container {
-    padding: 1.5rem 1rem;
-  }
-
-  h1 {
-    font-size: 1.3rem;
-  }
-
-  .question h2 {
-    font-size: 1rem;
-  }
-
-  .options label {
-    font-size: 1rem;
-    padding: 0.5rem 0;
-  }
-
-  button {
-    width: 100%;
-    font-size: 1.1rem;
-    padding: 1rem;
-  }
-
-  #result {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-}
-
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>あなたに合ったじぶん働き方診断</h1>
+    <h1>あなたに合った働き方診断</h1>
     <form id="quizForm">
-      <div class="question">
-        <h2>Q1. 仕事で一番大事にしたいものは？</h2>
-        <div class="options">
-          <label><input type="radio" name="q1" value="A" required /> 安定と保障</label>
-          <label><input type="radio" name="q1" value="B" /> 成長と挑戦</label>
-          <label><input type="radio" name="q1" value="C" /> 自由とバランス</label>
+      <div class="step active" data-step="1">
+        <div class="question">
+          <h2>Q1. 仕事で一番大事にしたいものは？</h2>
+          <div class="options">
+            <label><input type="radio" name="q1" value="A" required> 安定と保障</label>
+            <label><input type="radio" name="q1" value="B"> 成長と挑戦</label>
+            <label><input type="radio" name="q1" value="C"> 自由とバランス</label>
+          </div>
         </div>
+        <button type="button" onclick="nextStep()">次へ</button>
       </div>
-      <div class="question">
-        <h2>Q2. 自分の性格に一番近いのは？</h2>
-        <div class="options">
-          <label><input type="radio" name="q2" value="A" required /> ルールがある方が落ち着く</label>
-          <label><input type="radio" name="q2" value="B" /> 新しいことに飛び込むのが好き</label>
-          <label><input type="radio" name="q2" value="C" /> 自分のペースで動きたい</label>
+      <div class="step" data-step="2">
+        <div class="question">
+          <h2>Q2. 自分の性格に一番近いのは？</h2>
+          <div class="options">
+            <label><input type="radio" name="q2" value="A" required> ルールがある方が落ち着く</label>
+            <label><input type="radio" name="q2" value="B"> 新しいことに飛び込むのが好き</label>
+            <label><input type="radio" name="q2" value="C"> 自分のペースで動きたい</label>
+          </div>
         </div>
+        <button type="button" onclick="nextStep()">次へ</button>
       </div>
-      <div class="question">
-        <h2>Q3. 収入面で重視するのは？</h2>
-        <div class="options">
-          <label><input type="radio" name="q3" value="A" required /> 安定した固定給</label>
-          <label><input type="radio" name="q3" value="B" /> 努力次第で高収入</label>
-          <label><input type="radio" name="q3" value="C" /> 本業＋副収入</label>
+      <div class="step" data-step="3">
+        <div class="question">
+          <h2>Q3. 収入面で重視するのは？</h2>
+          <div class="options">
+            <label><input type="radio" name="q3" value="A" required> 安定した固定給</label>
+            <label><input type="radio" name="q3" value="B"> 努力次第で高収入</label>
+            <label><input type="radio" name="q3" value="C"> 本業＋副収入</label>
+          </div>
         </div>
+        <button type="button" onclick="nextStep()">次へ</button>
       </div>
-      <div class="question">
-        <h2>Q4. 理想の働き方に近いのは？</h2>
-        <div class="options">
-          <label><input type="radio" name="q4" value="A" required /> 組織でチームと協働</label>
-          <label><input type="radio" name="q4" value="B" /> 一人でプロジェクト推進</label>
-          <label><input type="radio" name="q4" value="C" /> 複数の環境を持つ</label>
+      <div class="step" data-step="4">
+        <div class="question">
+          <h2>Q4. 理想の働き方に近いのは？</h2>
+          <div class="options">
+            <label><input type="radio" name="q4" value="A" required> 組織でチームと協働</label>
+            <label><input type="radio" name="q4" value="B"> 一人でなんでもやる</label>
+            <label><input type="radio" name="q4" value="C"> 複数の環境を持つ</label>
+          </div>
         </div>
+        <button type="button" onclick="nextStep()">次へ</button>
       </div>
-      <div class="question">
-        <h2>Q5. 5年後、どうなっていたい？</h2>
-        <div class="options">
-          <label><input type="radio" name="q5" value="A" required /> 昇進して役職を得ていたい</label>
-          <label><input type="radio" name="q5" value="B" /> 自分のビジネスを展開していたい</label>
-          <label><input type="radio" name="q5" value="C" /> 本業と副業をうまく両立していたい</label>
+      <div class="step" data-step="5">
+        <div class="question">
+          <h2>Q5. 5年後、どうなっていたい？</h2>
+          <div class="options">
+            <label><input type="radio" name="q5" value="A" required> 昇進して役職を得ていたい</label>
+            <label><input type="radio" name="q5" value="B"> 自分のビジネスを展開していたい</label>
+            <label><input type="radio" name="q5" value="C"> 本業と副業をうまく両立していたい</label>
+          </div>
         </div>
+        <button type="submit">診断する</button>
       </div>
-      <button type="submit">診断する</button>
     </form>
     <div id="result"></div>
   </div>
 
   <script>
+    let currentStep = 1;
+    function nextStep() {
+      const current = document.querySelector('.step.active');
+      const next = document.querySelector(`.step[data-step="${currentStep + 1}"]`);
+      if (next) {
+        current.classList.remove('active');
+        next.classList.add('active');
+        currentStep++;
+      }
+    }
+
     document.getElementById('quizForm').addEventListener('submit', function(event) {
       event.preventDefault();
       const answers = ['q1', 'q2', 'q3', 'q4', 'q5'].map(q =>
@@ -155,11 +148,23 @@
       answers.forEach(ans => count[ans]++);
       let resultText = '';
       if (count.A >= 3) {
-        resultText = '<h2>あなたは【会社員タイプ】</h2><p>安定や組織での協働を重視するあなたは、会社員としてのキャリアで力を発揮できるタイプ。副業で小さく挑戦するのもおすすめ！</p>';
+        resultText = `
+          <h2>あなたは【会社員タイプ】</h2>
+          <img src="会社員タイプ.png" alt="会社員タイプ" style="width:80%;max-width:300px;margin:1rem auto;display:block;">
+          <p>安定や組織での協働を重視するあなたは、会社員としてのキャリアで力を発揮できるタイプ。+副業で小さく挑戦するのもおすすめ！</p>
+        `;
       } else if (count.B >= 3) {
-        resultText = '<h2>あなたは【フリーランスタイプ】</h2><p>自由と成長を求めるあなたは、フリーランス的な働き方に向いています。自分の力を信じて、一歩踏み出す準備を！</p>';
+        resultText = `
+          <h2>あなたは【フリーランスタイプ】</h2>
+          <img src="フリーランスタイプ.png" alt="フリーランスタイプ" style="width:80%;max-width:300px;margin:1rem auto;display:block;">
+          <p>自由と成長を求めるあなたは、フリーランス的な働き方に向いています。自分の力を信じて、一歩踏み出す準備を！</p>
+        `;
       } else {
-        resultText = '<h2>あなたは【副業ハイブリッドタイプ】</h2><p>安定と自由のバランスを求めるあなたは、副業やパラレルキャリアに最適。少しずつ自分らしい働き方を設計していきましょう！</p>';
+        resultText = `
+          <h2>あなたは【副業ハイブリッドタイプ】</h2>
+          <img src="副業ハイブリットタイプ.png" alt="副業ハイブリットタイプ" style="width:80%;max-width:300px;margin:1rem auto;display:block;">
+          <p>安定と自由のバランスを求めるあなたは、副業やパラレルキャリアに最適。少しずつ自分らしい働き方を設計していきましょう！</p>
+        `;
       }
       const resultBox = document.getElementById('result');
       resultBox.innerHTML = resultText;
