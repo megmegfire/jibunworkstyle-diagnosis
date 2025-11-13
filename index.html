@@ -105,7 +105,7 @@
       background-color: #ece8e4;
       border-radius: 10px;
       display: none;
-      text-align: center;
+      text-align: left;
     }
   </style>
 </head>
@@ -203,19 +203,19 @@ function nextStep() {
         resultText = `
           <h2>あなたは<br>【会社員タイプ】</h2>
           <img src="employee.png" alt="会社員タイプ" style="width:80%;max-width:300px;margin:1rem auto;display:block;">
-          <p>安定や組織での協働を重視するあなたは、会社員としてのキャリアで力を発揮できるタイプ。<br>+副業で小さく挑戦するのもおすすめ！</p>
+          <p>安定や組織での協働を重視するあなたは、会社員としてのキャリアで力を発揮できるタイプ。<br>でもふとした時に「この先の自分の働き方はこれでいいの？」って思うことがあるかも？今の仕事を続けながらも在宅でも生かせるスキルを身につけておくと、隙間時間で副業も可能に！より安定した未来が待っています！</p>
         `;
       } else if (count.B >= 3) {
         resultText = `
           <h2>あなたは<br>【フリーランスタイプ】</h2>
           <img src="freelance.png" alt="フリーランスタイプ" style="width:80%;max-width:300px;margin:1rem auto;display:block;">
-          <p>自由と成長を求めるあなたは、フリーランス的な働き方に向いています。<br>自分の力を信じて、一歩踏み出す準備を！</p>
+          <p>自由に働きたい<br>成長したい<br>そんなあなたは、フリーランスにぴったり！<br>自分のペースで動ける力があるけれど、最初の一歩を踏み出すのに勇気がいるかもしれません。<br>でも、自分に合うスキルを複数身につけることで好きな場所で働く未来が近づいていきます！</p>
         `;
       } else {
         resultText = `
           <h2>あなたは<br>【副業ハイブリッドタイプ】</h2>
           <img src="hybrid.png" alt="副業ハイブリットタイプ" style="width:80%;max-width:300px;margin:1rem auto;display:block;">
-          <p>安定と自由のバランスを求めるあなたは、副業やパラレルキャリアに最適。少しずつ自分らしい働き方を設計していきましょう！</p><br>
+          <p>安定も欲しいし自由な時間も大切にしたい。<br>そんなバランスを求めるあなたにぴったりなのは、副業という選択。スポットで働けるスキルを身につけることが大事。できることが増えることで、自分らしい働き方の選択肢が広がっていきます！</p><br>
         `;
       }
       const resultBox = document.getElementById('result');
