@@ -65,7 +65,7 @@
       padding: 2rem;
     }
     .container {
-      max-width: 600px;
+      max-width: 640px;
       margin: 0 auto;
       background-color: #ffffff;
       border-radius: 12px;
@@ -226,6 +226,7 @@ function nextStep() {
       const resultBox = document.getElementById('result');
       resultBox.innerHTML = resultText;
       resultBox.style.display = 'block';
+　　　 resultBox.scrollIntoView({ behavior: 'smooth' });
     });
   </script>
 </body>
