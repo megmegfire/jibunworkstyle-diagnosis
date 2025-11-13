@@ -111,7 +111,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>あなたに合ったじぶん働き方診断</h1>
+    <h1>あなたに合った<br>じぶん働き方診断</h1>
     <form id="quizForm">
       <div class="step active" data-step="1">
         <div class="question">
@@ -201,21 +201,21 @@ function nextStep() {
       let resultText = '';
       if (count.A >= 3) {
         resultText = `
-          <h2>あなたは【会社員タイプ】</h2>
+          <h2>あなたは<br>【会社員タイプ】</h2>
           <img src="employee.png" alt="会社員タイプ" style="width:80%;max-width:300px;margin:1rem auto;display:block;">
-          <p>安定や組織での協働を重視するあなたは、会社員としてのキャリアで力を発揮できるタイプ。+副業で小さく挑戦するのもおすすめ！</p>
+          <p>安定や組織での協働を重視するあなたは、会社員としてのキャリアで力を発揮できるタイプ。<br>+副業で小さく挑戦するのもおすすめ！</p>
         `;
       } else if (count.B >= 3) {
         resultText = `
-          <h2>あなたは【フリーランスタイプ】</h2>
+          <h2>あなたは<br>【フリーランスタイプ】</h2>
           <img src="freelance.png" alt="フリーランスタイプ" style="width:80%;max-width:300px;margin:1rem auto;display:block;">
-          <p>自由と成長を求めるあなたは、フリーランス的な働き方に向いています。自分の力を信じて、一歩踏み出す準備を！</p>
+          <p>自由と成長を求めるあなたは、フリーランス的な働き方に向いています。<br>自分の力を信じて、一歩踏み出す準備を！</p>
         `;
       } else {
         resultText = `
-          <h2>あなたは【副業ハイブリッドタイプ】</h2>
+          <h2>あなたは<br>【副業ハイブリッドタイプ】</h2>
           <img src="hybrid.png" alt="副業ハイブリットタイプ" style="width:80%;max-width:300px;margin:1rem auto;display:block;">
-          <p>安定と自由のバランスを求めるあなたは、副業やパラレルキャリアに最適。少しずつ自分らしい働き方を設計していきましょう！</p>
+          <p>安定と自由のバランスを求めるあなたは、副業やパラレルキャリアに最適。少しずつ自分らしい働き方を設計していきましょう！</p><br>
         `;
       }
       const resultBox = document.getElementById('result');
